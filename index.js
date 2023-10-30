@@ -41,26 +41,19 @@ function updateLocalStorage() {
   localStorage.setItem("score", JSON.stringify(score));
 }
 
-// 添加一个显示烟火效果的函数
-function displayFireworks() {
-  // 创建烟火容器
-  const fireworksContainer = document.createElement("div");
-  fireworksContainer.className = "fireworks-container";
-  document.body.appendChild(fireworksContainer);
+const bodyEl = document.querySelector("body");
 
-  // 创建烟火粒子
-  for (let i = 0; i < 30; i++) {
-    const fireworkParticle = document.createElement("div");
-    fireworkParticle.className = "firework-particle";
-    fireworksContainer.appendChild(fireworkParticle);
-  }
-
-  // 添加烟火爆炸效果的 CSS 类
-  fireworksContainer.classList.add("explode");
-
-  // 移除烟火容器，以便下次触发烟火效果
+bodyEl.addEventListener("mousemove", (event) => {
+  const xPos = event.offsetX;
+  const yPos = event.offsetY;
+  const spanEl = document.createElement("span");
+  spanEl.style.left = xPos + "px";
+  spanEl.style.top = yPos + "px";
+  const size = Math.random() * 100;
+  spanEl.style.width = size + "px";
+  spanEl.style.height = size + "px";
+  bodyEl.appendChild(spanEl);
   setTimeout(() => {
-    document.body.removeChild(fireworksContainer);
-  }, 2000); // 设置延迟时间以确保烟火效果完成
-}
-
+    spanEl.remove();
+  }, 3000);
+});
