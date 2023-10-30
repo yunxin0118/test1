@@ -57,37 +57,28 @@ body {
   text-align: right;
 }
 
-.fireworks-container {
+span {
+  background: url("https://cdn4.iconfinder.com/data/icons/general-office/91/General_Office_54-512.png");
+  width: 100px;
+  height: 100px;
   position: absolute;
-  top: 50%;
+  pointer-events: none;
+  background-size: cover;
   left: 50%;
-  width: 10px;
-  height: 10px;
+  top: 50%;
   transform: translate(-50%, -50%);
-  overflow: hidden;
+  animation: animate 6s linear;
 }
 
-.firework-particle {
-  position: absolute;
-  background: #f00; /* 烟火粒子颜色 */
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-}
-
-.explode .firework-particle {
-  animation: explode 2s ease-in-out;
-  opacity: 0;
-  transform: translate(0, 0);
-}
-
-@keyframes explode {
+@keyframes animate {
   0% {
-    transform: translate(0, 0);
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    filter: hue-rotate(0);
   }
   100% {
-    transform: translate(-100px, -100px); /* 烟火粒子飞散的位置 */
+    transform: translate(-50%, -5000%);
     opacity: 0;
+    filter: hue-rotate(720deg);
   }
 }
-
