@@ -56,3 +56,38 @@ body {
   color: purple;
   text-align: right;
 }
+
+.fireworks-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+
+.firework-particle {
+  position: absolute;
+  background: #f00; /* 烟火粒子颜色 */
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.explode .firework-particle {
+  animation: explode 2s ease-in-out;
+  opacity: 0;
+  transform: translate(0, 0);
+}
+
+@keyframes explode {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100px, -100px); /* 烟火粒子飞散的位置 */
+    opacity: 0;
+  }
+}
+
